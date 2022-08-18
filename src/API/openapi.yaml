@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  description: ユーザーの名前と年齢を登録、検索するAPI
+  title: User info register and search API
+  version: 1.0.0
+paths:
+  /user/age:
+    get:
+      tags:
+        - user age
+      summary: search user age by name
+      description: ''
+      operationId: searchUserAgeByName
+      parameters:
+        - name: 'name'
+          in: query
+          description: User name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Member not found
+        '405':
+          description: Invalid input
+  /user:
+    post:
+      tags:
+        - user info
+      summary: register user
+      description: ''
+      operationId: registerUser
+      requestBody:
+        description: user info
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInfo'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Member not found
+        '405':
+          description: Invalid input
+components:
+    schemas:
+      UserInfo:
+        type: object
+        properties:
+          name:
+            type: string
+            example: 'okayasu'
+          age:
+            type: integer
+            example: 28
+      Result:
+        type: object
+        properties:
+          message:
+            type: string
+            example: Operation Successful
+          result:
+            type: array
+            items:
+              type: integer
+              example: []

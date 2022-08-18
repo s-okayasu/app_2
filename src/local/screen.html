@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>登録/検索画面</title>
+    </head>
+    <body>
+		<p>氏名と年齢を登録</p>
+	    <form action=http://127.0.0.1:5000/post method="POST">
+	        <label for="title_name">氏名</label>
+	        <input type="text" name="name">
+	        <label for="problem_name">年齢</label>
+	        <input type="text" name="age">
+	        <input type="submit" value="登録する">
+	    </form>
+		<p>氏名をキーに年齢を検索</p>
+	    <form action=http://127.0.0.1:5000/get method="GET">
+	        <label for="title_name">氏名</label>
+	        <input type="text" name="name">
+	        <input type="submit" value="検索する">
+	    </form>
+    </body>
+</html>
